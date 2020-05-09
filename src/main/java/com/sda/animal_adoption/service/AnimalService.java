@@ -19,15 +19,15 @@ public class AnimalService {
         this.animalDao = animalDao;
     }
 
-    List<Animal> animalList = new ArrayList<>(Arrays.asList(
-            new Animal(1, "test", "test", "dog", "m", 0, "good dog"),
-            new Animal(2, "test", "test", "dog", "m", 0, "good dog"),
-            new Animal(3, "test", "test", "dog", "m", 0, "good dog")
-    ));
+//    List<Animal> animalList = new ArrayList<>(Arrays.asList(
+//            new Animal(1, "test", "test", "dog", "m", 0, "good dog"),
+//            new Animal(2, "test", "test", "dog", "m", 0, "good dog"),
+//            new Animal(3, "test", "test", "dog", "m", 0, "good dog")
+//    ));
 
-    public List<Animal> getAllAnimals() {
-        return animalList;
-    }
+//    public List<Animal> getAllAnimals() {
+//        return animalList;
+//    }
 
 //    public Animal getAnimal(String idAnimal) {
 //        return animalList.stream().filter(t -> t.getIdAnimal().equals(idAnimal)).findFirst().get();

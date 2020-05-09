@@ -25,10 +25,10 @@ public class AnimalController {
         return "prefix" + hi;
     }
 
-    @GetMapping("/animals")
-    public List<Animal> getAllAnimals() {
-        return animalService.getAllAnimals();
-    }
+//    @GetMapping("/animals")
+//    public List<Animal> getAllAnimals() {
+//        return animalService.getAllAnimals();
+//    }
 
 
 }

@@ -9,6 +9,12 @@ public class UserDaoFake {
 
     List<User> users = new ArrayList<>();
 
+    {
+        User user = new User();
+        user.setFirstName("Timea");
+        users.add(user);
+    }
+
     public void saveUser(User user) {//User or boolean or exception if void
         users.add(user);
     }
@@ -36,5 +42,9 @@ public class UserDaoFake {
             }
         }
         throw new NullPointerException("User id not found");
+    }
+
+    public List<User> findAll() {
+        return users;
     }
 }
