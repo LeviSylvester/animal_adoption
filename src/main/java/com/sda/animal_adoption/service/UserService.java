@@ -1,6 +1,7 @@
 package com.sda.animal_adoption.service;
 
 import com.sda.animal_adoption.dao.user.UserDaoFake;
+import com.sda.animal_adoption.dao.user.UserRepoInterface;
 import com.sda.animal_adoption.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class UserService {
 
     private UserDaoFake userDaoFake;
 
+//    private UserRepoInterface userRepoInterface;
+
     @Autowired
     public UserService(UserDaoFake userDaoFake) {
         this.userDaoFake = userDaoFake;
@@ -25,7 +28,7 @@ public class UserService {
     }
 
     public void saveU(User user) {
-        userDaoFake.saveUser(user);
+        userDaoFake.saveUser(user); //crudrepository, not userdaofake
     }
 
     public List<User> findUsersWithGivenInitial(String initial) {

@@ -13,8 +13,20 @@ public class UserDaoFake {
 
     {
         User user = new User();
+        user.setId(8L);
         user.setFirstName("Timea");
+
+        User user1 = new User();
+        user1.setId(9L);
+        user1.setFirstName("Alex");
+
+        User user2 = new User();
+        user2.setId(100L);
+        user2.setFirstName("Levi");
+
         users.add(user);
+        users.add(user1);
+        users.add(user2);
     }
 
     public void saveUser(User user) {//User or boolean or exception if void
@@ -22,10 +34,16 @@ public class UserDaoFake {
     }
 
     public void deleteUser(Long id) {
-        for (User user : users) {
-            if (user.getId() != null && user.getId().equals(id)) {
-                users.remove(user);
+        int index = -1;
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() != null && users.get(i).getId().equals(id)) {
+                index = i;
+                break;
             }
+        }
+        if (index != -1) {
+            users.remove(index);
+            System.out.println(users);
         }
     }
 
