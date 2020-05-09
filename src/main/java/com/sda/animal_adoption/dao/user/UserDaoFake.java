@@ -1,10 +1,12 @@
 package com.sda.animal_adoption.dao.user;
 
 import com.sda.animal_adoption.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class UserDaoFake {
 
     List<User> users = new ArrayList<>();
@@ -19,8 +21,12 @@ public class UserDaoFake {
         users.add(user);
     }
 
-    public void deleteUser(User user) {
-        users.remove(user);
+    public void deleteUser(Long id) {
+        for (User user : users) {
+            if (user.getId() != null && user.getId().equals(id)) {
+                users.remove(user);
+            }
+        }
     }
 
     public void updateUser(Long id, User newUser) { // /User user
