@@ -1,11 +1,20 @@
 package com.sda.animal_adoption.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Donation {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private User user;
+    @Column
     private float sum;
+    @Column
     private String details;
+    @ManyToOne
+    @JoinColumn(name="id_user")
+    private User user; //userID in db
 
     public Donation() {
     }

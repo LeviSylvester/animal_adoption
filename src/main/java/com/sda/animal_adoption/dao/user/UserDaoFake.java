@@ -14,15 +14,15 @@ public class UserDaoFake {
     {
         User user = new User();
         user.setId(8L);
-        user.setFirstName("Timea");
+        user.setName("Timea");
 
         User user1 = new User();
         user1.setId(9L);
-        user1.setFirstName("Alex");
+        user1.setName("Alex");
 
         User user2 = new User();
         user2.setId(100L);
-        user2.setFirstName("Levi");
+        user2.setName("Levi");
 
         users.add(user);
         users.add(user1);

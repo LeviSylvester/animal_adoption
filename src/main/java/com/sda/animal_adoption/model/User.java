@@ -2,20 +2,29 @@ package com.sda.animal_adoption.model;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import javax.persistence.*;
+
 //@EntityScan
 //@Table(name = "user")
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Shelter shelter;
-
-    private String firstName;
-    private String lastName;
+    @Column
+    private String name;
+    @Column
     private String phone;
+    @Column
     private String email;
+    @Column
     private String address;
+    @Column
     private String type;
+    @ManyToOne
+    @JoinColumn(name = "id_shelter")
+    private Shelter shelter;
 
     public User() {
     }
@@ -36,20 +45,12 @@ public class User {
         this.shelter = shelter;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {

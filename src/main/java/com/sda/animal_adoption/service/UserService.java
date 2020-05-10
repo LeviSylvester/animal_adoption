@@ -1,7 +1,7 @@
 package com.sda.animal_adoption.service;
 
+import com.sda.animal_adoption.dao.user.UserDao;
 import com.sda.animal_adoption.dao.user.UserDaoFake;
-import com.sda.animal_adoption.dao.user.UserRepoInterface;
 import com.sda.animal_adoption.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,28 +14,30 @@ public class UserService {
 
 //    private UserDaoFake userDaoFake = new UserDaoFake();
 
-    private UserDaoFake userDaoFake;
+//    private UserDaoFake userDaoFake;
 
 //    private UserRepoInterface userRepoInterface;
 
+    private UserDao userDao;
+
     @Autowired
-    public UserService(UserDaoFake userDaoFake) {
-        this.userDaoFake = userDaoFake;
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
     }
 
-    public List<User> findAll() {
-        return userDaoFake.findAll();
+    public Iterable<User> findAll() {
+        return userDao.findAll();
     }
 
     public void saveU(User user) {
-        userDaoFake.saveUser(user); //crudrepository, not userdaofake
+        userDao.save(user); //crudrepository, not userdaofake
     }
 
-    public List<User> findUsersWithGivenInitial(String initial) {
-        List<User> users = userDaoFake.findAll();
+    public Iterable<User> findUsersWithGivenInitial(String initial) {
+        Iterable<User> users = userDao.findAll();
         List<User> usersResult = new ArrayList<>();
         for (User user : users) {
-            if (user.getFirstName().startsWith(initial)) {
+            if (user.getName().startsWith(initial)) {
                 usersResult.add(user);
             }
         }
@@ -43,6 +45,6 @@ public class UserService {
     }
 
     public void delete(Long id){
-        userDaoFake.deleteUser(id);
+        userDao.deleteById(id);
     }
 }

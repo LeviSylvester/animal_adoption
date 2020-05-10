@@ -1,15 +1,28 @@
 package com.sda.animal_adoption.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class Animal {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Shelter shelter;
+    @Column
     private int age;
+    @Column
     private String gender;
+    @Column
     private String race;
+    @Column
     private String description;
+    @Column
+    private String photo;
+
+    @ManyToOne
+    @JoinColumn(name="id_shelter")
+    private Shelter shelter;
 
     public Animal() {
     }

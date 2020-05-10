@@ -1,13 +1,25 @@
 package com.sda.animal_adoption.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Contract {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Adoption adoption;
+    @Column
     private String type;
+    @Column
     private String race;
+    @Column
     private String gender;
+    @Column
     private String description;
+
+    @OneToOne
+    @JoinColumn(name = "id_adoption", referencedColumnName = "id")
+    private Adoption adoption;
 
     public Contract() {
     }

@@ -1,12 +1,21 @@
 package com.sda.animal_adoption.model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Shelter {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String name;
+    @Column
     private String address;
+    @OneToMany(mappedBy = "shelter")
     private List<User> users;
+    @OneToMany(mappedBy = "shelter")
     private List<Animal> animals;
 
     public Shelter() {

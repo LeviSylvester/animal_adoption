@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/findAll")
-    public List<User> findAll() {
+    public Iterable<User> findAll() {
         return userService.findAll();
     }
 

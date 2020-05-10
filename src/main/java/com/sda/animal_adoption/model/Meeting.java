@@ -1,12 +1,22 @@
 package com.sda.animal_adoption.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Meeting {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private User user;
-    private Animal animal;
+    @Column
     private Date date; //mod to sql.date
+    @OneToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private User user; //user_id in db
+    @OneToOne
+    @JoinColumn(name = "id_animal", referencedColumnName = "id")
+    private Animal animal; //animal_id in db
 
     public Meeting() {
     }
