@@ -1,7 +1,6 @@
 package com.sda.animal_adoption.service;
 
-import com.sda.animal_adoption.dao.user.UserDao;
-import com.sda.animal_adoption.dao.user.UserDaoFake;
+import com.sda.animal_adoption.dao.UserDao;
 import com.sda.animal_adoption.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,14 +11,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-//    private UserDaoFake userDaoFake = new UserDaoFake();
-
-//    private UserDaoFake userDaoFake;
-
-//    private UserRepoInterface userRepoInterface;
-
     private UserDao userDao;
-    //MyInterface myInterface;
 
     @Autowired
     public UserService(UserDao userDao) {
@@ -30,8 +22,8 @@ public class UserService {
         return (List<User>) userDao.findAll();
     }
 
-    public void saveU(User user) {
-        userDao.save(user); //crudrepository, not userdaofake
+    public void save(User user) {
+        userDao.save(user);
     }
 
     public Iterable<User> findUsersWithGivenInitial(String initial) {
@@ -47,5 +39,10 @@ public class UserService {
 
     public void delete(Long id){
         userDao.deleteById(id);
+    }
+
+    public User findById(Long id) {
+//        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        return userDao.findById(id).orElseThrow(() -> new NullPointerException("Does not exist"));
     }
 }

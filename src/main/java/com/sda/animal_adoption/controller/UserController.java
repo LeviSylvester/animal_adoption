@@ -3,15 +3,12 @@ package com.sda.animal_adoption.controller;
 import com.sda.animal_adoption.model.User;
 import com.sda.animal_adoption.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class UserController {
-
-//    private UserService userService = new UserService();
 
     private UserService userService;
 
@@ -20,19 +17,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/findAllUsers")
     @ResponseBody
     @CrossOrigin("*")
     public List<User> findAll() {
         return userService.findAll();
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveUser")
     public void saveUser(@RequestBody User user) {
-        userService.saveU(user);
+        userService.save(user);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.delete(id);
     }

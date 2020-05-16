@@ -1,9 +1,9 @@
 package com.sda.animal_adoption.dao;
 
-import com.sda.animal_adoption.model.Animal;
+import com.sda.animal_adoption.model.Adoption;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AnimalDao extends CrudRepository<Animal, Long> {
+public interface AdoptionDao extends CrudRepository<Adoption, Long> {
 }

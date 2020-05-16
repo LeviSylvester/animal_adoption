@@ -13,10 +13,12 @@ public class Adoption {
     private Date date; //modify to// sql.date when creating db, recommended sql.date when working with db (sql.d extends it)
     @Column
     private String details;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_user")
     private User user;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_animal")
     private Animal animal;
 

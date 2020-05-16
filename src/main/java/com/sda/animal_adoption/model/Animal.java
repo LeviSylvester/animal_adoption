@@ -20,7 +20,7 @@ public class Animal {
     @Column
     private String photo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_shelter")
     private Shelter shelter;
 

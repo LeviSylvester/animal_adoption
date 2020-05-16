@@ -3,12 +3,10 @@ package com.sda.animal_adoption.controller;
 import com.sda.animal_adoption.model.Animal;
 import com.sda.animal_adoption.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@Controller
 @RestController
 public class AnimalController {
 
@@ -19,16 +17,28 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
-    @GetMapping("/sayHi/{hi}")
+    @GetMapping("/findAllAnimals")
     @ResponseBody
-    public String sayHi(@PathVariable String hi) {
-        return "prefix" + hi;
+    @CrossOrigin("*")
+    public List<Animal> findAll() {
+        return animalService.findAll();
     }
 
-//    @GetMapping("/animals")
-//    public List<Animal> getAllAnimals() {
-//        return animalService.getAllAnimals();
-//    }
+    @PostMapping("/saveAnimal")
+    public void saveUser(@RequestBody Animal animal) {
+        animalService.save(animal);
+    }
 
+    @DeleteMapping("/deleteAnimal/{id}")
+    public void deleteAnimal(@PathVariable Long id) {
+        animalService.delete(id);
+    }
+
+//    @GetMapping("/sayHi/{hi}")
+//    @ResponseBody
+//    public String sayHi(@PathVariable String hi) {
+//        return "prefix" + hi;
+
+//    }
 
 }
