@@ -13,6 +13,7 @@ public class Shelter {
     private String name;
     @Column
     private String address;
+
     @OneToMany(mappedBy = "shelter")
     private List<User> users;
     @OneToMany(mappedBy = "shelter")
@@ -45,19 +46,19 @@ public class Shelter {
         this.address = address;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public List<Animal> getAnimals() {
-        return animals;
-    }
-
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
+//
+//    public List<Animal> getAnimals() {
+//        return animals;
+//    }
+//
+//    public void setAnimals(List<Animal> animals) {
+//        this.animals = animals;
+//    }
 }

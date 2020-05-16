@@ -11,6 +11,7 @@ public class Meeting {
     private long id;
     @Column
     private Date date; //mod to sql.date
+
     @OneToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private User user; //user_id in db

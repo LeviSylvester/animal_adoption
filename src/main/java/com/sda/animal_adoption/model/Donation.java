@@ -12,6 +12,7 @@ public class Donation {
     private float sum;
     @Column
     private String details;
+
     @ManyToOne
     @JoinColumn(name="id_user")
     private User user; //userID in db

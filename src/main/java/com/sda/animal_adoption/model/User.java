@@ -22,6 +22,7 @@ public class User {
     private String address;
     @Column
     private String type;
+
     @ManyToOne
     @JoinColumn(name = "id_shelter")
     private Shelter shelter;

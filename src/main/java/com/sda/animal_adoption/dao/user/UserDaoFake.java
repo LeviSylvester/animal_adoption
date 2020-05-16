@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserDaoFake {
+public class UserDaoFake implements MyInterface {
 
     List<User> users = new ArrayList<>();
 
@@ -70,5 +70,10 @@ public class UserDaoFake {
 
     public List<User> findAll() {
         return users;
+    }
+
+    @Override
+    public User getUser() {
+        return null;
     }
 }

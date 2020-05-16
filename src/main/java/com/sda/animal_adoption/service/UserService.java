@@ -19,14 +19,15 @@ public class UserService {
 //    private UserRepoInterface userRepoInterface;
 
     private UserDao userDao;
+    //MyInterface myInterface;
 
     @Autowired
     public UserService(UserDao userDao) {
         this.userDao = userDao;
     }
 
-    public Iterable<User> findAll() {
-        return userDao.findAll();
+    public List<User> findAll() {
+        return (List<User>) userDao.findAll();
     }
 
     public void saveU(User user) {

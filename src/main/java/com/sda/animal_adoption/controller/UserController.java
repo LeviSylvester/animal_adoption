@@ -3,6 +3,7 @@ package com.sda.animal_adoption.controller;
 import com.sda.animal_adoption.model.User;
 import com.sda.animal_adoption.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,9 @@ public class UserController {
     }
 
     @GetMapping("/findAll")
-    public Iterable<User> findAll() {
+    @ResponseBody
+    @CrossOrigin("*")
+    public List<User> findAll() {
         return userService.findAll();
     }
 
