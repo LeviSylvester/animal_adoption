@@ -1,5 +1,7 @@
 package com.sda.animal_adoption.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,9 +16,12 @@ public class Shelter {
     @Column
     private String address;
 
-    @OneToMany(mappedBy = "shelter")
+    @JsonIgnore
+    @OneToMany(mappedBy = "shelter", fetch = FetchType.LAZY)
     private List<User> users;
-    @OneToMany(mappedBy = "shelter")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "shelter", fetch = FetchType.LAZY)
     private List<Animal> animals;
 
     public Shelter() {

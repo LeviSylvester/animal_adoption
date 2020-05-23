@@ -1,5 +1,6 @@
 package com.sda.animal_adoption.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class User {
     @Column
     private String type;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_shelter")
     private Shelter shelter;

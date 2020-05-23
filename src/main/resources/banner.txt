@@ -1,0 +1,6 @@
+${AnsiColor.BLUE}         _          _                 _      _       _             _   _
+${AnsiColor.BLUE}        / \   _ __ (_)_ __ ___   __ _| |    / \   __| | ___  _ __ | |_(_) ___  _ __
+${AnsiColor.BLUE}       / _ \ | '_ \| | '_ ` _ \ / _` | |   / _ \ / _` |/ _ \| '_ \| __| |/ _ \| '_ \
+${AnsiColor.BLACK}(\(\${Ansi.CYAN}  / ___ \| | | | | | | | | | (_| | |  / ___ \ (_| | (_) | |_) | |_| | (_) | | | |
+${AnsiColor.BLACK}(-.-)${AnsiColor.MAGENTA}/_/   \_\_| |_|_|_| |_| |_|\__,_|_| /_/   \_\__,_|\___/| .__/ \__|_|\___/|_| |_|
+${AnsiColor.BLACK}o_(")(")${AnsiColor.MAGENTA}                                                  |_|

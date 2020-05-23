@@ -30,8 +30,7 @@ public class AnimalService {
     }
 
     public Animal findById(Long id) {
-//        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
-        return animalDao.findById(id).orElseThrow(() -> new NullPointerException("Does not exist"));
+        return animalDao.findById(id).orElseThrow(() -> new AnimalNotFoundException("Could not find animal with ID " + id));
     }
 
 }

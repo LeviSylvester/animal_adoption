@@ -1,7 +1,8 @@
 package com.sda.animal_adoption.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 public class Animal {
@@ -19,7 +20,10 @@ public class Animal {
     private String description;
     @Column
     private String photo;
+    @Column
+    private String adopted;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_shelter")
     private Shelter shelter;
@@ -74,4 +78,21 @@ public class Animal {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getAdopted() {
+        return adopted;
+    }
+
+    public void setAdopted(String adopted) {
+        this.adopted = adopted;
+    }
+
 }

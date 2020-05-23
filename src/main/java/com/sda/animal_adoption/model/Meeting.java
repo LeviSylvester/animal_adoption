@@ -15,6 +15,7 @@ public class Meeting {
     @OneToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private User user; //user_id in db
+
     @OneToOne
     @JoinColumn(name = "id_animal", referencedColumnName = "id")
     private Animal animal; //animal_id in db

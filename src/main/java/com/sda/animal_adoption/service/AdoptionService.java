@@ -1,9 +1,7 @@
 package com.sda.animal_adoption.service;
 
 import com.sda.animal_adoption.dao.AdoptionDao;
-import com.sda.animal_adoption.dao.AnimalDao;
 import com.sda.animal_adoption.model.Adoption;
-import com.sda.animal_adoption.model.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +30,8 @@ public class AdoptionService {
 
     public Adoption getAdoption(Long id) {
 //        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
-        return adoptionDao.findById(id).orElseThrow(() -> new NullPointerException("Does not exist"));
+        return adoptionDao.findById(id).orElseThrow(
+                () -> new AdoptionNotFoundException("Could not find adoption with ID" + id)
+        );
     }
-
-    //cuplam un animal cu o persoana
-    //stergem animalul din shelter
-
 }

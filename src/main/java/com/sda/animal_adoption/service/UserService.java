@@ -1,8 +1,10 @@
 package com.sda.animal_adoption.service;
 
 import com.sda.animal_adoption.dao.UserDao;
+import com.sda.animal_adoption.dao.UserInterface;
 import com.sda.animal_adoption.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,23 +13,30 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private UserDao userDao;
+//    private UserDao userDao;
+
+//    @Autowired
+//    public UserService(UserDao userDao) {
+//        this.userDao = userDao;
+//    }
+
+    private UserInterface userInterface;
 
     @Autowired
-    public UserService(UserDao userDao) {
-        this.userDao = userDao;
+    public UserService(@Qualifier("userRepositoryImpl")UserInterface userInterface) {
+        this.userInterface = userInterface;
     }
 
     public List<User> findAll() {
-        return (List<User>) userDao.findAll();
+        return (List<User>) userInterface.findAll();
     }
 
     public void save(User user) {
-        userDao.save(user);
+        userInterface.save(user);
     }
 
     public Iterable<User> findUsersWithGivenInitial(String initial) {
-        Iterable<User> users = userDao.findAll();
+        Iterable<User> users = userInterface.findAll();
         List<User> usersResult = new ArrayList<>();
         for (User user : users) {
             if (user.getName().startsWith(initial)) {
@@ -38,11 +47,11 @@ public class UserService {
     }
 
     public void delete(Long id){
-        userDao.deleteById(id);
+        userInterface.delete(id);
     }
 
     public User findById(Long id) {
 //        return findAll().stream().filter(t -> t.getId().equals(id)).findFirst().get();
-        return userDao.findById(id).orElseThrow(() -> new NullPointerException("Does not exist"));
+        return userInterface.findById(id);
     }
 }

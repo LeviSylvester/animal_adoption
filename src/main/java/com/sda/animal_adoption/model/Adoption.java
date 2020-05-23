@@ -1,7 +1,9 @@
 package com.sda.animal_adoption.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Adoption {
@@ -10,14 +12,16 @@ public class Adoption {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private Date date; //modify to// sql.date when creating db, recommended sql.date when working with db (sql.d extends it)
+    private Timestamp date; //Date from sql gives "0" without UTC, and UTC gives -3
     @Column
     private String details;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_user")
     private User user;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_animal")
     private Animal animal;
@@ -49,11 +53,11 @@ public class Adoption {
         this.animal = animal;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
